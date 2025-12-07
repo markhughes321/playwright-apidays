@@ -30,10 +30,13 @@ export class EditorPage extends BasePage {
 
     if (article.tags) {
       await this.tagsInput.fill(article.tags);
-      await this.tagsInput.press('Enter');
+      await this.tagsInput.press('Tab');
     }
 
-    await this.publishButton.click();
+    await Promise.all([
+      this.page.waitForURL(/#\/article\//),
+      this.publishButton.click(),
+    ]);
   }
 
   async verifyEditorPage(): Promise<void> {
