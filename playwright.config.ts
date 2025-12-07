@@ -17,12 +17,13 @@ export default defineConfig({
     video: 'on',
     launchOptions: {
       slowMo: 1000,
+      args: ['--start-maximized'],
     },
   },
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'], viewport: null, deviceScaleFactor: undefined },
     },
   ],
 });

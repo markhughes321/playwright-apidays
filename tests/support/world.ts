@@ -24,8 +24,8 @@ export class CustomWorld extends World {
   }
 
   async init(): Promise<void> {
-    this.browser = await chromium.launch({ headless: false });
-    this.context = await this.browser.newContext();
+    this.browser = await chromium.launch({ headless: false, args: ['--start-maximized'] });
+    this.context = await this.browser.newContext({ viewport: null });
     this.page = await this.context.newPage();
 
     // Initialize page objects
