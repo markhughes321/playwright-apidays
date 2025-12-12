@@ -22,6 +22,14 @@ When('the user is on the new article page', async function (this: CustomWorld) {
   await this.articlePage.verifyArticlePage(this.articleData.title);
 });
 
+Then('they can see the article title, description and tags', async function (this: CustomWorld) {
+  await expect(this.page.locator('h1')).toContainText(this.articleData.title);
+  await expect(this.page.locator('.article-content')).toContainText(this.articleData.body);
+  if (this.articleData.tags) {
+    await expect(this.page.locator('.tag-list')).toContainText(this.articleData.tags);
+  }
+});
+
 Then('they can delete the article successfully', async function (this: CustomWorld) {
   await this.articlePage.deleteArticle();
   await this.articlePage.verifyArticleDeleted();

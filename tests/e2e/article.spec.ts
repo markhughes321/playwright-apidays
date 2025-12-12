@@ -3,7 +3,7 @@ import { generateArticleData } from '../data';
 import { EditorPage, ArticlePage } from '../../pages';
 
 test.describe('Article Management', () => {
-  test('should create and delete an article', async ({ authenticatedPage }) => {
+  test('Article Management: Create, Verify and Delete an article', async ({ authenticatedPage }) => {
     const editorPage = new EditorPage(authenticatedPage);
     const articlePage = new ArticlePage(authenticatedPage);
     const articleData = generateArticleData();
